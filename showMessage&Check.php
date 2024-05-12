@@ -1,6 +1,6 @@
 <?php
 
-class Util {
+class check {
     // Method of input value sanitization
     public function testInput($data) {
         $data = trim($data);

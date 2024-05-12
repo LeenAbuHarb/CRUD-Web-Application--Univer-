@@ -1,22 +1,22 @@
 <?php
 
 require_once 'db.php';
-require_once 'util.php';
+require_once 'showMessage&Check.php';
 
     $db = new Database;
-    $util = new Util;
+    $check = new check;
 
   // Handle Add New Item Ajax Request
 if (isset($_POST['add'])) {
-    $name = $util->testInput($_POST['name']);
-    $Description = $util->testInput($_POST['Description']);
-    $Price = $util->testInput($_POST['Price']);
-    $Quantity = $util->testInput($_POST['Quantity']);
+    $name = $check->testInput($_POST['name']);
+    $Description = $check->testInput($_POST['Description']);
+    $Price = $check->testInput($_POST['Price']);
+    $Quantity = $check->testInput($_POST['Quantity']);
 
     if ($db->insert($name, $Description, $Price, $Quantity)) {
-        echo $util->showMessage('success', 'Item inserted successfully!');
+        echo $check->showMessage('success', 'Item inserted successfully!');
     } else {
-        echo $util->showMessage('danger', 'Something went wrong!');
+        echo $check->showMessage('danger', 'Something went wrong!');
     }
 }
 
@@ -57,16 +57,16 @@ if (isset($_GET['read'])) {
 
   // Handle Update Item Ajax Request
 if (isset($_POST['update'])) {
-    $id = $util->testInput($_POST['id']);
-    $name = $util->testInput($_POST['name']);
-    $Description = $util->testInput($_POST['Description']);
-    $Price = $util->testInput($_POST['Price']);
-    $Quantity = $util->testInput($_POST['Quantity']);
+    $id = $check->testInput($_POST['id']);
+    $name = $check->testInput($_POST['name']);
+    $Description = $check->testInput($_POST['Description']);
+    $Price = $check->testInput($_POST['Price']);
+    $Quantity = $check->testInput($_POST['Quantity']);
 
     if ($db->update($id, $name, $Description, $Price, $Quantity)) {
-        echo $util->showMessage('success', 'Item updated successfully!');
+        echo $check->showMessage('success', 'Item updated successfully!');
     } else {
-        echo $util->showMessage('danger', 'Something went wrong!');
+        echo $check->showMessage('danger', 'Something went wrong!');
     }
 }
 
@@ -74,9 +74,9 @@ if (isset($_POST['update'])) {
 if (isset($_GET['delete'])) {
     $id = $_GET['id'];
     if ($db->delete($id)) {
-        echo $util->showMessage('info', 'Item deleted successfully!');
+        echo $check->showMessage('info', 'Item deleted successfully!');
     } else {
-        echo $util->showMessage('danger', 'Something went wrong!');
+        echo $check->showMessage('danger', 'Something went wrong!');
     }
 }
 
