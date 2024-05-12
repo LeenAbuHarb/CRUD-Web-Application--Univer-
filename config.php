@@ -4,7 +4,7 @@ class Config {
     private const DBHOST = 'localhost';
     private const DBUSER = 'root';
     private const DBPASS = '';
-    private const DBNAME = 'fetch_crud_app';
+    private const DBNAME = 'crud-web-application';
 
     private $dsn = 'mysql:host=' . self::DBHOST . ';dbname=' . self::DBNAME . '';
 
